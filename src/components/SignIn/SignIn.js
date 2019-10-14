@@ -58,6 +58,7 @@ class SignIn extends Component {
               <Form.Control
                 required
                 type="email"
+                autocomplete
                 name="email"
                 value={email}
                 placeholder="Enter email"
@@ -71,6 +72,7 @@ class SignIn extends Component {
                 name="password"
                 value={password}
                 type="password"
+                autocomplete
                 placeholder="Password"
                 onChange={this.handleChange}
               />

@@ -2,7 +2,7 @@
 
 ### Links for Music Buddy Full Stack Project
 #### Front-end
-*
+* https://enbacon.github.io/music-buddy/
 * https://github.com/enbacon/music-buddy
 
 #### Back-end

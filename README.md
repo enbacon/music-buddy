@@ -1,5 +1,4 @@
 # Music Buddy
-# Ruby Red Salon
 
 ### Links for Music Buddy Full Stack Project
 #### Front-end
@@ -7,8 +6,8 @@
 * https://github.com/enbacon/music-buddy
 
 #### Back-end
-* 
 *
+* https://github.com/enbacon/music-buddy-back-end
 
 ## Front-end Technologies Used
 * React

@@ -49,6 +49,7 @@ const Piece = ({ user, alerts, match }) => {
     <div>
       <h1>Pieces</h1>
       <p>Title: {piece && piece.title}</p>
+      <p>Composer: {piece && piece.composer}</p>
       <Button className="btn btn-primary mr-2" href={`#/pieces/${match.params.id}/edit`}>Edit</Button>
       <button className="btn btn-outline-dark mr-2" onClick={destroy}>Delete Piece</button>
       <Link to="/pieces">Back to all pieces</Link>

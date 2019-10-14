@@ -21,12 +21,15 @@ const Pieces = ({ user, alerts }) => {
   }, [])
 
   const piecesJsx = pieces.map(piece => (
-    <li key={piece._id}><Link to={`/pieces/${piece._id}`}>{piece.title}</Link></li>
+    <div key={piece._id}>
+      <li><Link to={`/pieces/${piece._id}`}>{piece.title}</Link></li>
+      <p>by {piece.composer}</p>
+    </div>
   ))
 
   return (
     <div>
-      <h1>Pieces</h1>
+      <h1>Repertoire</h1>
       <ul>
         {piecesJsx}
       </ul>

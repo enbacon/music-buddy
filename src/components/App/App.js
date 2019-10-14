@@ -9,15 +9,19 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
-class App extends Component {
-  constructor () {
-    super()
+import Pieces from '../Pieces/Pieces'
+import Piece from '../Pieces/Piece'
+import CreatePiece from '../Pieces/CreatePiece'
+import EditPiece from '../Pieces/EditPiece'
 
-    this.state = {
+class App extends Component {
+  // constructor () {
+  //   super()
+    // this.state = {
+    state = {
       user: null,
       alerts: []
     }
-  }
 
   setUser = user => this.setState({ user })
 
@@ -54,6 +58,46 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
+          <AuthenticatedRoute
+            user={user}
+            exact path='/pieces'
+            render={() => (
+              <Pieces
+                user={user}
+                alert={this.alert}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact path='/pieces/:id'
+            render={() => (
+              <Piece
+                user={user}
+                alert={this.alert}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact path='/create-piece'
+            render={() => (
+              <CreatePiece
+                user={user}
+                alert={this.alert}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact path='/pieces/:id/edit'
+            render={() => (
+              <EditPiece
+                user={user}
+                alert={this.alert}
+              />
+            )}
+          />
         </main>
       </Fragment>
     )

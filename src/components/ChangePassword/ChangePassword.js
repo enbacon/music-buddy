@@ -59,7 +59,7 @@ class ChangePassword extends Component {
                 name="oldPassword"
                 value={oldPassword}
                 type="password"
-                autocomplete
+                autoComplete
                 placeholder="Old Password"
                 onChange={this.handleChange}
               />
@@ -71,7 +71,7 @@ class ChangePassword extends Component {
                 name="newPassword"
                 value={newPassword}
                 type="password"
-                autocomplete
+                autoComplete
                 placeholder="New Password"
                 onChange={this.handleChange}
               />

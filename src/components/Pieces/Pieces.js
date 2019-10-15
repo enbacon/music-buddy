@@ -16,7 +16,6 @@ const Pieces = ({ user, alerts }) => {
       }
     })
       .then(responseData => setPieces(responseData.data.pieces))
-      .then(console.log)
       .catch(console.error)
   }, [])
 
@@ -31,7 +30,7 @@ const Pieces = ({ user, alerts }) => {
     <div>
       <h1>Repertoire</h1>
       <ul>
-        {piecesJsx}
+        {pieces.length ? piecesJsx : 'Please add music to your repertoire!'}
       </ul>
     </div>
   )

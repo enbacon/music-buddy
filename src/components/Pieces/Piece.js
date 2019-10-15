@@ -17,7 +17,6 @@ const Piece = ({ user, alerts, match }) => {
       }
     })
       .then(responseData => setPiece(responseData.data.piece))
-      .then(() => console.log(piece))
       .catch(console.error)
   }, [])
 
@@ -34,11 +33,6 @@ const Piece = ({ user, alerts, match }) => {
       .catch(console.error)
   }
 
-  // if no piece then display loading to user
-  // if (!piece) {
-  //   return <p>Loading...</p>
-  // }
-
   // if piece is deleted then redirect to home
   if (deleted) {
     return <Redirect to={
@@ -47,12 +41,14 @@ const Piece = ({ user, alerts, match }) => {
 
   return (
     <div>
-      <h1>Pieces</h1>
+      <h1>Piece</h1>
       <p>Title: {piece && piece.title}</p>
       <p>Composer: {piece && piece.composer}</p>
+      <p>Memorized: {(piece && piece.memorized) ? 'Yes' : 'No'}</p>
+      <p>Piano Accompaniment: {(piece && piece.piano) ? 'Yes' : 'No'}</p>
       <Button className="btn btn-primary mr-2" href={`#/pieces/${match.params.id}/edit`}>Edit</Button>
       <button className="btn btn-outline-dark mr-2" onClick={destroy}>Delete Piece</button>
-      <Link to="/pieces">Back to all pieces</Link>
+      <Link to="/pieces">Return to Repertoire</Link>
     </div>
   )
 }

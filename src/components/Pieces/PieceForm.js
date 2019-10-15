@@ -12,7 +12,7 @@ const PieceForm = ({ piece, handleChange, handleSubmit }) => {
         <Form.Control
           type="text"
           placeholder="Title"
-          autocomplete="off"
+          autoComplete="off"
           name="title"
           onChange={handleChange}
           value={piece.title}
@@ -24,7 +24,7 @@ const PieceForm = ({ piece, handleChange, handleSubmit }) => {
         <Form.Control
           type="text"
           placeholder="Composer"
-          autocomplete="off"
+          autoComplete="off"
           name="composer"
           onChange={handleChange}
           value={piece.composer}
@@ -33,13 +33,46 @@ const PieceForm = ({ piece, handleChange, handleSubmit }) => {
       </Form.Group>
       <div className="mb-3">
         <p>Memorized:</p>
-        <Form.Check inline onChange={handleChange} label="Yes" type="radio" name="memorized" value="true" />
-        <Form.Check inline onChange={handleChange} label="No" type="radio" name="memorized" value="false" required />
+        <Form.Check
+          inline
+          type="radio"
+          value="true"
+          name="memorized"
+          label="Yes"
+          onChange={handleChange}
+          checked={piece.memorized === 'true'}
+        />
+        <Form.Check
+          inline
+          type="radio"
+          value="false"
+          name="memorized"
+          label="No"
+          checked={piece.memorized === 'false'}
+          onChange={handleChange}
+        />
       </div>
       <div className="mb-3">
         <p>Piano Accompaniment:</p>
-        <Form.Check inline onChange={handleChange} label="Yes" type="radio" name="piano" value="true" />
-        <Form.Check inline onChange={handleChange} label="No" type="radio" name="piano" value="false" required />
+        <Form.Check
+          inline
+          type="radio"
+          value="true"
+          name="piano"
+          label="Yes"
+          onChange={handleChange}
+          checked={piece.piano === 'true'}
+        />
+        <Form.Check
+          inline
+          type="radio"
+          value="false"
+          name="piano"
+          label="No"
+          onChange={handleChange}
+          checked={piece.piano === 'false'}
+          required
+        />
       </div>
       <Button variant="primary" className="btn btn-primary mr-2" type="submit">Submit</Button>
       <Button variant="secondary" className="ml-2" type="button" href={cancelPath}>Cancel</Button>

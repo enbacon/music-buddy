@@ -9,8 +9,8 @@ const CreatePiece = ({ user }) => {
   const pieceObject = {
     title: '',
     composer: '',
-    memorized: false,
-    piano: false
+    memorized: 'false',
+    piano: 'false'
   }
   const [created, setCreated] = useState(false)
   const [piece, setPiece] = useState(pieceObject)
@@ -31,7 +31,6 @@ const CreatePiece = ({ user }) => {
       },
       data: { piece }
     })
-      .then('this is the ', piece)
       .then(responseData => setCreated(responseData.data.piece._id))
       .catch(console.error)
   }

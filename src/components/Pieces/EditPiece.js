@@ -5,7 +5,7 @@ import apiUrl from '../../apiConfig'
 import PieceForm from './PieceForm'
 
 const EditPiece = ({ user, match, alert, history }) => {
-  const [piece, setPiece] = useState({ title: '', composer: '' })
+  const [piece, setPiece] = useState({ title: '', composer: '', memorized: 'false', piano: 'false' })
 
   useEffect(() => {
     axios({
@@ -15,8 +15,12 @@ const EditPiece = ({ user, match, alert, history }) => {
         'Authorization': `Token token=${user.token}`
       }
     })
+      .then((responseData) => {
+        responseData.data.piece.memorized = responseData.data.piece.memorized ? 'true' : 'false'
+        responseData.data.piece.piano = responseData.data.piece.piano ? 'true' : 'false'
+        return responseData
+      })
       .then(responseData => setPiece(responseData.data.piece))
-      .then(() => console.log(piece))
       .catch(console.error)
   }, [])
 
@@ -37,7 +41,7 @@ const EditPiece = ({ user, match, alert, history }) => {
       data: { piece }
     })
       .then(() => alert({ heading: 'Success!', message: 'You updated a piece!', variant: 'success' }))
-      .then(() => history.push(`/pieces${match.params.id}`))
+      .then(() => history.push(`/pieces/${match.params.id}`))
       .catch(() => alert({ heading: 'Rut roh!', message: 'Something went wrong', variant: 'danger' }))
   }
 

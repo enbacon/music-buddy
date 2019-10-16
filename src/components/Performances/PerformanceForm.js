@@ -8,7 +8,7 @@ const PerformanceForm = ({ performance, handleChange, handleSubmit }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="title">
-        <Form.Label>Title:</Form.Label>
+        <Form.Label>Date:</Form.Label>
         <Form.Control
           type="text"
           placeholder="Title"
@@ -19,15 +19,25 @@ const PerformanceForm = ({ performance, handleChange, handleSubmit }) => {
         />
       </Form.Group>
       <Form.Group controlId="composer">
-        <Form.Label>Composer:</Form.Label>
+        <Form.Label>Time:</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Composer"
+          placeholder="Time"
+          name="composer"
+          onChange={handleChange}
+          value={performance.time}
+          required
+        />
+      <Form.Group controlId="composer">
+        <Form.Label>Location:</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Address"
           name="composer"
           onChange={handleChange}
           value={performance.composer}
           required
-        />
+          />
       </Form.Group>
       <div className="mb-3">
         <p>Memorized:</p>

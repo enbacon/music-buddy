@@ -14,6 +14,11 @@ import Piece from '../Pieces/Piece'
 import CreatePiece from '../Pieces/CreatePiece'
 import EditPiece from '../Pieces/EditPiece'
 
+import Performances from '../Performances/Performances'
+import Performance from '../Performances/Performance'
+import CreatePerformance from '../Performances/CreatePerformance'
+import EditPerformance from '../Performances/EditPerformance'
+
 class App extends Component {
   // constructor () {
   //   super()
@@ -93,6 +98,47 @@ class App extends Component {
             exact path='/pieces/:id/edit'
             render={() => (
               <EditPiece
+                user={user}
+                alert={this.alert}
+              />
+            )}
+          />
+
+          <AuthenticatedRoute
+            user={user}
+            exact path='/performances'
+            render={() => (
+              <Performances
+                user={user}
+                alert={this.alert}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact path='/performances/:id'
+            render={() => (
+              <Performance
+                user={user}
+                alert={this.alert}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact path='/create-performance'
+            render={() => (
+              <CreatePerformance
+                user={user}
+                alert={this.alert}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact path='/performances/:id/edit'
+            render={() => (
+              <EditPerformance
                 user={user}
                 alert={this.alert}
               />

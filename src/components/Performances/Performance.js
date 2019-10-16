@@ -4,20 +4,20 @@ import { withRouter, Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
-const Piece = ({ user, alerts, match }) => {
-  const [piece, setPiece] = useState(null)
+const Performance = ({ user, alerts, match }) => {
+  const [performance, setPerformance] = useState(null)
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `${apiUrl}/pieces/${match.params.id}`,
+      url: `${apiUrl}/performances/${match.params.id}`,
       headers: {
         'Authorization': `Token token=${user.token}`
       }
     })
-      .then(responseData => setPiece(responseData.data.piece))
-      .then(() => console.log(piece))
+      .then(responseData => setPerformance(responseData.data.performance))
+      .then(() => console.log(performance))
       .catch(console.error)
   }, [])
 
@@ -25,7 +25,7 @@ const Piece = ({ user, alerts, match }) => {
   const destroy = () => {
     axios({
       method: 'DELETE',
-      url: `${apiUrl}/pieces/${match.params.id}`,
+      url: `${apiUrl}/performances/${match.params.id}`,
       headers: {
         'Authorization': `Token token=${user.token}`
       }
@@ -34,30 +34,30 @@ const Piece = ({ user, alerts, match }) => {
       .catch(console.error)
   }
 
-  // // if no piece then display loading to user
-  // if (!piece) {
-  //   return <p>Please add a piece to your repertoire.</p>
+  // // if no performance then display loading to user
+  // if (!performance) {
+  //   return <p>Please add a performance to your repertoire.</p>
   // }
 
-  // if piece is deleted then redirect to home
+  // if performance is deleted then redirect to home
   if (deleted) {
     return <Redirect to={
-      { pathname: '/pieces' } } />
+      { pathname: '/performances' } } />
   }
 
   return (
     <div>
-      <h1>Piece</h1>
-      <p>Title: {piece && piece.title}</p>
-      <p>Composer: {piece && piece.composer}</p>
-      <p>Memorized: {piece && piece.memorized}</p>
-      <p>Piano Accompaniment: {piece && piece.piano}</p>
-      <Button className="btn btn-primary mr-2" href={`#/pieces/${match.params.id}/edit`}>Edit</Button>
-      <button className="btn btn-outline-dark mr-2" onClick={destroy}>Delete Piece</button>
-      <Link to="/pieces">Back to all pieces</Link>
+      <h1>Performance</h1>
+      <p>{performance && performance.date}</p>
+      <p>{performance && performance.time}</p>
+      <p>The performance will be held at {performance && performance.memorized}</p>
+      <p>{performance && performance.pieces}</p>
+      <Button className="btn btn-primary mr-2" href={`#/performances/${match.params.id}/edit`}>Edit</Button>
+      <button className="btn btn-outline-dark mr-2" onClick={destroy}>Delete Performance</button>
+      <Link to="/performances">Back to all performances</Link>
     </div>
   )
 }
 
-// {*/ withRouter gives Piece all of the props /*}
-export default withRouter(Piece)
+// {*/ withRouter gives Performance all of the props /*}
+export default withRouter(Performance)

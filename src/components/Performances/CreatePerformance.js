@@ -2,20 +2,24 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-import PieceForm from './PieceForm'
+import PerformanceForm from './PerformanceForm'
 // import { Link } from 'react-router-dom'
 
-const CreatePiece = ({ user }) => {
-  const pieceObject = {
-    title: '',
-    composer: ''
+const CreatePerformance = ({ user }) => {
+  const performanceObject = {
+    date: '',
+    time: null,
+    location: '',
+    pieces: [],
+    intermission: null,
+    length: null
   }
   const [created, setCreated] = useState(false)
-  const [piece, setPiece] = useState(pieceObject)
+  const [performance, setPerformance] = useState(performanceObject)
 
   const handleChange = event => {
     event.persist()
-    setPiece(piece => ({ ...piece, [event.target.name]: event.target.value }))
+    setPerformance(performance => ({ ...performance, [event.target.name]: event.target.value }))
   }
 
   const handleSubmit = event => {
@@ -23,27 +27,27 @@ const CreatePiece = ({ user }) => {
 
     axios({
       method: 'POST',
-      url: `${apiUrl}/pieces`,
+      url: `${apiUrl}/performances`,
       headers: {
         'Authorization': `Bearer ${user.token}`
       },
-      data: { piece }
+      data: { performance }
     })
-      .then(responseData => setCreated(responseData.data.piece._id))
+      .then(responseData => setCreated(responseData.data.performance._id))
       .catch(console.error)
   }
 
   if (created) {
-    return <Redirect to={`/pieces/${created}`} />
+    return <Redirect to={`/performances/${created}`} />
   }
 
   return (
-    <PieceForm
-      piece={piece}
+    <PerformanceForm
+      performance={performance}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
     />
   )
 }
 
-export default CreatePiece
+export default CreatePerformance

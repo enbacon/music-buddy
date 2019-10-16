@@ -5,33 +5,33 @@ import apiUrl from '../../apiConfig'
 
 const Performances = ({ user, alerts }) => {
   console.log(user, alerts)
-  const [pieces, setPieces] = useState([])
+  const [performances, setPerformances] = useState([])
 
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `${apiUrl}/pieces`,
+      url: `${apiUrl}/performances`,
       headers: {
         'Authorization': `Token token=${user.token}`
       }
     })
-      .then(responseData => setPieces(responseData.data.pieces))
+      .then(responseData => setPerformances(responseData.data.performances))
       .then(console.log)
       .catch(console.error)
   }, [])
 
-  const piecesJsx = pieces.map(piece => (
-    <div key={piece._id}>
-      <li><Link to={`/pieces/${piece._id}`}>{piece.title}</Link></li>
-      <p>by {piece.composer}</p>
+  const performancesJsx = performances.map(performance => (
+    <div key={performance._id}>
+      <li><Link to={`/performances/${performance._id}`}>{performance.title}</Link></li>
+      <p>by {performance.composer}</p>
     </div>
   ))
 
   return (
     <div>
-      <h1>Repertoire</h1>
+      <h1>Performances</h1>
       <ul>
-        {piecesJsx}
+        {performances.length ? performancesJsx : 'Please add your performance information'}
       </ul>
     </div>
   )

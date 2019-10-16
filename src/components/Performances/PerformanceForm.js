@@ -2,8 +2,8 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-const PieceForm = ({ piece, handleChange, handleSubmit }) => {
-  const cancelPath = piece._id ? `#/pieces/${piece._id}` : '#pieces'
+const PerformanceForm = ({ performance, handleChange, handleSubmit }) => {
+  const cancelPath = performance._id ? `#/performances/${performance._id}` : '#performances'
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -14,7 +14,7 @@ const PieceForm = ({ piece, handleChange, handleSubmit }) => {
           placeholder="Title"
           name="title"
           onChange={handleChange}
-          value={piece.title}
+          value={performance.title}
           required
         />
       </Form.Group>
@@ -25,7 +25,7 @@ const PieceForm = ({ piece, handleChange, handleSubmit }) => {
           placeholder="Composer"
           name="composer"
           onChange={handleChange}
-          value={piece.composer}
+          value={performance.composer}
           required
         />
       </Form.Group>
@@ -45,4 +45,4 @@ const PieceForm = ({ piece, handleChange, handleSubmit }) => {
   )
 }
 
-export default PieceForm
+export default PerformanceForm

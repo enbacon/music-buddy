@@ -2,27 +2,27 @@ import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-import PieceForm from './PieceForm'
+import PerformanceForm from './PerformanceForm'
 
-const EditPiece = ({ user, match, alert, history }) => {
-  const [piece, setPiece] = useState({ title: '', composer: '' })
+const EditPerformance = ({ user, match, alert, history }) => {
+  const [performance, setPerformance] = useState({ title: '', composer: '' })
 
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `${apiUrl}/pieces/${match.params.id}`,
+      url: `${apiUrl}/performances/${match.params.id}`,
       headers: {
         'Authorization': `Token token=${user.token}`
       }
     })
-      .then(responseData => setPiece(responseData.data.piece))
-      .then(() => console.log(piece))
+      .then(responseData => setPerformance(responseData.data.performance))
+      .then(() => console.log(performance))
       .catch(console.error)
   }, [])
 
   const handleChange = event => {
     event.persist()
-    setPiece(piece => ({ ...piece, [event.target.name]: event.target.value }))
+    setPerformance(performance => ({ ...performance, [event.target.name]: event.target.value }))
   }
 
   const handleSubmit = event => {
@@ -30,24 +30,24 @@ const EditPiece = ({ user, match, alert, history }) => {
 
     axios({
       method: 'PATCH',
-      url: `${apiUrl}/pieces/${match.params.id}`,
+      url: `${apiUrl}/performances/${match.params.id}`,
       headers: {
         'Authorization': `Bearer ${user.token}`
       },
-      data: { piece }
+      data: { performance }
     })
-      .then(() => alert({ heading: 'Success!', message: 'You updated a piece!', variant: 'success' }))
-      .then(() => history.push(`/pieces${match.params.id}`))
+      .then(() => alert({ heading: 'Success!', message: 'You updated a performance!', variant: 'success' }))
+      .then(() => history.push(`/performances${match.params.id}`))
       .catch(() => alert({ heading: 'Rut roh!', message: 'Something went wrong', variant: 'danger' }))
   }
 
   return (
-    <PieceForm
-      piece={piece}
+    <PerformanceForm
+      performance={performance}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
     />
   )
 }
 
-export default withRouter(EditPiece)
+export default withRouter(EditPerformance)

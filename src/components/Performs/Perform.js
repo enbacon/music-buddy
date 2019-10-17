@@ -3,9 +3,10 @@ import Button from 'react-bootstrap/Button'
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import moment from 'moment'
 
-const Performance = ({ user, alerts, match }) => {
-  const [performance, setPerformance] = useState(null)
+const Perform = ({ user, alerts, match }) => {
+  const [perform, setPerform] = useState(null)
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
@@ -16,16 +17,16 @@ const Performance = ({ user, alerts, match }) => {
         'Authorization': `Token token=${user.token}`
       }
     })
-      .then(responseData => setPerformance(responseData.data.performance))
-      .then(() => console.log(performance))
+      .then(responseData => setPerform(responseData.data.perform))
+      .then(() => console.log(perform))
       .catch(console.error)
   }, [])
 
-  // AJAX request to delete movie
+  // AJAX request to delete performance
   const destroy = () => {
     axios({
       method: 'DELETE',
-      url: `${apiUrl}/performances/${match.params.id}`,
+      url: `${apiUrl}/performsances/${match.params.id}`,
       headers: {
         'Authorization': `Token token=${user.token}`
       }
@@ -33,11 +34,6 @@ const Performance = ({ user, alerts, match }) => {
       .then(() => setDeleted(true))
       .catch(console.error)
   }
-
-  // // if no performance then display loading to user
-  // if (!performance) {
-  //   return <p>Please add a performance to your repertoire.</p>
-  // }
 
   // if performance is deleted then redirect to home
   if (deleted) {
@@ -48,16 +44,16 @@ const Performance = ({ user, alerts, match }) => {
   return (
     <div>
       <h1>Performance</h1>
-      <p>{performance && performance.date}</p>
-      <p>{performance && performance.time}</p>
-      <p>The performance will be held at {performance && performance.memorized}</p>
-      <p>{performance && performance.pieces}</p>
+      <p>{perform && perform.date}</p>
+      <p>{moment(perform && perform.date).format('MMMM Do YYYY')}</p>
+      <p>Located at {perform && perform.location}</p>
+      <p>{perform && perform.pieces}</p>
       <Button className="btn btn-primary mr-2" href={`#/performances/${match.params.id}/edit`}>Edit</Button>
-      <button className="btn btn-outline-dark mr-2" onClick={destroy}>Delete Performance</button>
-      <Link to="/performances">Back to all performances</Link>
+      <button className="btn btn-outline-dark mr-2" onClick={destroy}>Delete Perform</button>
+      <Link to="/performances">Return to all performances</Link>
     </div>
   )
 }
 
-// {*/ withRouter gives Performance all of the props /*}
-export default withRouter(Performance)
+// {*/ withRouter gives Perform all of the props /*}
+export default withRouter(Perform)

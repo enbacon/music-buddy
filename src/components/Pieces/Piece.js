@@ -20,7 +20,7 @@ const Piece = ({ user, alerts, match }) => {
       .catch(console.error)
   }, [])
 
-  // AJAX request to delete movie
+  // AJAX request to delete piece
   const destroy = () => {
     axios({
       method: 'DELETE',

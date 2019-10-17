@@ -2,10 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-import PerformanceForm from './PerformanceForm'
+import PerformForm from './PerformForm'
 
-const EditPerformance = ({ user, match, alert, history }) => {
-  const [performance, setPerformance] = useState({ title: '', composer: '' })
+const EditPerform = ({ user, match, alert, history }) => {
+  const [perform, setPerform] = useState({
+    date: '',
+    time: '',
+    location: '',
+    pieces: '',
+    intermission: '',
+    length: ''
+  })
 
   useEffect(() => {
     axios({
@@ -15,14 +22,14 @@ const EditPerformance = ({ user, match, alert, history }) => {
         'Authorization': `Token token=${user.token}`
       }
     })
-      .then(responseData => setPerformance(responseData.data.performance))
-      .then(() => console.log(performance))
+      .then(responseData => setPerform(responseData.data.performance))
+      .then(() => console.log(perform))
       .catch(console.error)
   }, [])
 
   const handleChange = event => {
     event.persist()
-    setPerformance(performance => ({ ...performance, [event.target.name]: event.target.value }))
+    setPerform(perform => ({ ...perform, [event.target.name]: event.target.value }))
   }
 
   const handleSubmit = event => {
@@ -34,7 +41,7 @@ const EditPerformance = ({ user, match, alert, history }) => {
       headers: {
         'Authorization': `Bearer ${user.token}`
       },
-      data: { performance }
+      data: { perform }
     })
       .then(() => alert({ heading: 'Success!', message: 'You updated a performance!', variant: 'success' }))
       .then(() => history.push(`/performances${match.params.id}`))
@@ -42,12 +49,12 @@ const EditPerformance = ({ user, match, alert, history }) => {
   }
 
   return (
-    <PerformanceForm
-      performance={performance}
+    <PerformForm
+      perform={perform}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
     />
   )
 }
 
-export default withRouter(EditPerformance)
+export default withRouter(EditPerform)

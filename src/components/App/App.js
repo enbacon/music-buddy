@@ -14,10 +14,10 @@ import Piece from '../Pieces/Piece'
 import CreatePiece from '../Pieces/CreatePiece'
 import EditPiece from '../Pieces/EditPiece'
 
-import Performances from '../Performances/Performances'
-import Performance from '../Performances/Performance'
-import CreatePerformance from '../Performances/CreatePerformance'
-import EditPerformance from '../Performances/EditPerformance'
+import Performs from '../Performs/Performs'
+import Perform from '../Performs/Perform'
+import CreatePerform from '../Performs/CreatePerform'
+import EditPerform from '../Performs/EditPerform'
 
 class App extends Component {
   // constructor () {
@@ -108,7 +108,7 @@ class App extends Component {
             user={user}
             exact path='/performances'
             render={() => (
-              <Performances
+              <Performs
                 user={user}
                 alert={this.alert}
               />
@@ -118,7 +118,7 @@ class App extends Component {
             user={user}
             exact path='/performances/:id'
             render={() => (
-              <Performance
+              <Perform
                 user={user}
                 alert={this.alert}
               />
@@ -128,7 +128,7 @@ class App extends Component {
             user={user}
             exact path='/create-performance'
             render={() => (
-              <CreatePerformance
+              <CreatePerform
                 user={user}
                 alert={this.alert}
               />
@@ -138,7 +138,7 @@ class App extends Component {
             user={user}
             exact path='/performances/:id/edit'
             render={() => (
-              <EditPerformance
+              <EditPerform
                 user={user}
                 alert={this.alert}
               />

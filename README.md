@@ -51,6 +51,7 @@
 
 ## Goals for Future Versions and Unsolved Issues
 ### Goals
-
+* Add length to pieces.
+* Display on a performance, the length of the performance including intermission.
 
 ### Unsolved Issues

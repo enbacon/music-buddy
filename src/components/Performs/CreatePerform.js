@@ -2,24 +2,24 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-import PerformanceForm from './PerformanceForm'
+import PerformForm from './PerformForm'
 // import { Link } from 'react-router-dom'
 
-const CreatePerformance = ({ user }) => {
-  const performanceObject = {
+const CreatePerform = ({ user, pieces }) => {
+  const performObject = {
     date: '',
-    time: null,
+    time: '',
     location: '',
-    pieces: [],
-    intermission: null,
-    length: null
+    pieces: '',
+    intermission: 0,
+    length: 0
   }
   const [created, setCreated] = useState(false)
-  const [performance, setPerformance] = useState(performanceObject)
+  const [perform, setPerform] = useState(performObject)
 
   const handleChange = event => {
     event.persist()
-    setPerformance(performance => ({ ...performance, [event.target.name]: event.target.value }))
+    setPerform(perform => ({ ...perform, [event.target.name]: event.target.value }))
   }
 
   const handleSubmit = event => {
@@ -31,23 +31,23 @@ const CreatePerformance = ({ user }) => {
       headers: {
         'Authorization': `Bearer ${user.token}`
       },
-      data: { performance }
+      data: { performance: { ...perform } }
     })
-      .then(responseData => setCreated(responseData.data.performance._id))
+      .then(responseData => setCreated(responseData.data.perform._id))
       .catch(console.error)
   }
 
   if (created) {
-    return <Redirect to={`/performances/${created}`} />
+    return <Redirect to={`/performsances/${created}`} />
   }
 
   return (
-    <PerformanceForm
-      performance={performance}
+    <PerformForm
+      perform={perform}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
     />
   )
 }
 
-export default CreatePerformance
+export default CreatePerform

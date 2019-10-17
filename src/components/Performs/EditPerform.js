@@ -9,9 +9,9 @@ const EditPerform = ({ user, match, alert, history }) => {
     date: '',
     time: '',
     location: '',
-    pieces: '',
-    intermission: '',
-    length: ''
+    pieces: [],
+    intermission: 0,
+    length: 0
   })
 
   useEffect(() => {
@@ -53,6 +53,7 @@ const EditPerform = ({ user, match, alert, history }) => {
       perform={perform}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
+      user={user}
     />
   )
 }

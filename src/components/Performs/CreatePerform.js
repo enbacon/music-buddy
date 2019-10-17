@@ -5,15 +5,16 @@ import apiUrl from '../../apiConfig'
 import PerformForm from './PerformForm'
 // import { Link } from 'react-router-dom'
 
-const CreatePerform = ({ user, pieces }) => {
+const CreatePerform = ({ user }) => {
   const performObject = {
     date: '',
     time: '',
     location: '',
-    pieces: '',
+    pieces: [],
     intermission: 0,
     length: 0
   }
+
   const [created, setCreated] = useState(false)
   const [perform, setPerform] = useState(performObject)
 
@@ -33,12 +34,12 @@ const CreatePerform = ({ user, pieces }) => {
       },
       data: { performance: { ...perform } }
     })
-      .then(responseData => setCreated(responseData.data.perform._id))
+      .then(responseData => setCreated(responseData.data.performance._id))
       .catch(console.error)
   }
 
   if (created) {
-    return <Redirect to={`/performsances/${created}`} />
+    return <Redirect to={`/performances/${created}`} />
   }
 
   return (
@@ -46,6 +47,7 @@ const CreatePerform = ({ user, pieces }) => {
       perform={perform}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
+      user={user}
     />
   )
 }

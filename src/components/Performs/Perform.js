@@ -26,7 +26,7 @@ const Perform = ({ user, alerts, match }) => {
   const destroy = () => {
     axios({
       method: 'DELETE',
-      url: `${apiUrl}/performsances/${match.params.id}`,
+      url: `${apiUrl}/performances/${match.params.id}`,
       headers: {
         'Authorization': `Token token=${user.token}`
       }
@@ -49,7 +49,7 @@ const Perform = ({ user, alerts, match }) => {
       <p>Located at {perform && perform.location}</p>
       <p>{perform && perform.pieces}</p>
       <Button className="btn btn-primary mr-2" href={`#/performances/${match.params.id}/edit`}>Edit</Button>
-      <button className="btn btn-outline-dark mr-2" onClick={destroy}>Delete Perform</button>
+      <button className="btn btn-outline-dark mr-2" onClick={destroy}>Delete</button>
       <Link to="/performances">Return to all performances</Link>
     </div>
   )

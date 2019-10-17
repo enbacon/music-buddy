@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import MultiSelect from '@khanacademy/react-multi-select'
+import axios from 'axios'
+import apiUrl from '../../apiConfig'
 
-const PerformForm = ({ perform, handleChange, handleSubmit }) => {
+const PerformForm = ({ user, perform, handleChange, handleSubmit }) => {
   const cancelPath = perform._id ? `#/performances/${perform._id}` : '#performances'
+
+  const [pieces, setPieces] = useState([])
+
+  useEffect(() => {
+    axios({
+      method: 'GET',
+      url: `${apiUrl}/pieces`,
+      headers: {
+        'Authorization': `Token token=${user.token}`
+      }
+    })
+      .then(responseData => setPieces(responseData.data.pieces))
+      .catch(console.error)
+  }, [])
+
+  const options = pieces.map(piece => (
+    { label: piece.title, value: piece._id }
+  ))
 
   return (
     <Form onSubmit={handleSubmit} className="mt-2">
@@ -42,13 +63,10 @@ const PerformForm = ({ perform, handleChange, handleSubmit }) => {
       </Form.Group>
       <Form.Group controlId="piece">
         <Form.Label>Select Pieces:</Form.Label>
-        <Form.Control
-          type="search"
-          placeholder="select piece"
-          autoComplete="on"
-          name="piece"
-          onChange={handleChange}
-          value={perform.piece}
+        <MultiSelect
+          options={options}
+          selected={perform.pieces}
+          onSelectedChanged={selected => setPieces(pieces)}
         />
       </Form.Group>
       <Form.Group controlId="intermission">

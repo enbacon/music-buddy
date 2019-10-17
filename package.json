@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@khanacademy/react-multi-select": "^0.3.3",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",

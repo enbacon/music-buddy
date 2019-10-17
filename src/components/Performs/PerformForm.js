@@ -5,8 +5,8 @@ import MultiSelect from '@khanacademy/react-multi-select'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
-const PerformForm = ({ user, perform, handleChange, handleSubmit }) => {
-  const cancelPath = perform._id ? `#/performances/${perform._id}` : '#performances'
+const PerformForm = ({ user, perform, handleChange, handleSelect, handleSubmit }) => {
+  const cancelPath = perform && perform._id ? `#/performances/${perform._id}` : '#performances'
 
   const [pieces, setPieces] = useState([])
 
@@ -66,7 +66,7 @@ const PerformForm = ({ user, perform, handleChange, handleSubmit }) => {
         <MultiSelect
           options={options}
           selected={perform.pieces}
-          onSelectedChanged={selected => setPieces(pieces)}
+          onSelectedChanged={handleSelect}
         />
       </Form.Group>
       <Form.Group controlId="intermission">

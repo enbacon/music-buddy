@@ -3,12 +3,13 @@ import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import PerformForm from './PerformForm'
+import moment from 'moment'
 
 const EditPerform = ({ user, match, alert, history }) => {
   const [perform, setPerform] = useState({
     date: '',
     time: '',
-    location: '',
+    location: 'this is a test',
     pieces: [],
     intermission: 0,
     length: 0
@@ -22,7 +23,10 @@ const EditPerform = ({ user, match, alert, history }) => {
         'Authorization': `Token token=${user.token}`
       }
     })
-      .then(responseData => setPerform(responseData.data.performance))
+      .then(responseData => {
+        const formattedDate = moment(responseData.data.performance.date).format('YYYY-MM-DD')
+        setPerform({ ...responseData.data.performance, date: formattedDate })
+      })
       .then(() => console.log('this is perform', perform))
       .catch(console.error)
   }, [])
@@ -30,6 +34,10 @@ const EditPerform = ({ user, match, alert, history }) => {
   const handleChange = event => {
     event.persist()
     setPerform(perform => ({ ...perform, [event.target.name]: event.target.value }))
+  }
+
+  const handleSelect = arrayOfPieces => {
+    setPerform({ ...perform, pieces: arrayOfPieces })
   }
 
   const handleSubmit = event => {
@@ -55,6 +63,7 @@ const EditPerform = ({ user, match, alert, history }) => {
     <PerformForm
       perform={perform}
       handleChange={handleChange}
+      handleSelect={handleSelect}
       handleSubmit={handleSubmit}
       user={user}
     />

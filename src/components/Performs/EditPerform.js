@@ -23,7 +23,7 @@ const EditPerform = ({ user, match, alert, history }) => {
       }
     })
       .then(responseData => setPerform(responseData.data.performance))
-      .then(() => console.log(perform))
+      .then(() => console.log('this is perform', perform))
       .catch(console.error)
   }, [])
 
@@ -47,6 +47,9 @@ const EditPerform = ({ user, match, alert, history }) => {
       .then(() => history.push(`/performances${match.params.id}`))
       .catch(() => alert({ heading: 'Rut roh!', message: 'Something went wrong', variant: 'danger' }))
   }
+
+  // moment((perform && perform.date), '').format('MMMM Do YYYY')
+  // moment(perform.time, 'HH:mm').format('h:mm A')
 
   return (
     <PerformForm

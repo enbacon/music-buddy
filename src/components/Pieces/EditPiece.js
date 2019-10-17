@@ -5,7 +5,12 @@ import apiUrl from '../../apiConfig'
 import PieceForm from './PieceForm'
 
 const EditPiece = ({ user, match, alert, history }) => {
-  const [piece, setPiece] = useState({ title: '', composer: '', memorized: 'false', piano: 'false' })
+  const [piece, setPiece] = useState({
+    title: '',
+    composer: '',
+    memorized: 'false',
+    piano: 'false'
+  })
 
   useEffect(() => {
     axios({

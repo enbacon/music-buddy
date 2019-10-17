@@ -23,7 +23,7 @@ const Performs = ({ user, alerts }) => {
 
   const performsJsx = performs.map(perform => (
     <div key={perform._id}>
-      <li><Link to={`/performances/${perform._id}`}>{moment(perform && perform.date).format('MMMM Do YYYY')}</Link></li>
+      <li><Link to={`/performances/${perform._id}`}>{moment(perform && perform.date).format('dddd, MMMM Do YYYY')}</Link></li>
       <p>{ moment(perform.time, 'HH:mm').format('h:mm A') }</p>
       <p>{perform.location}</p>
       <p>{perform.pieces}</p>

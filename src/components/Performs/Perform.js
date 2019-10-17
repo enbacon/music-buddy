@@ -6,7 +6,7 @@ import apiUrl from '../../apiConfig'
 import moment from 'moment'
 
 const Perform = ({ user, alerts, match }) => {
-  const [perform, setPerform] = useState(null)
+  const [perform, setPerform] = useState([])
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
@@ -17,8 +17,8 @@ const Perform = ({ user, alerts, match }) => {
         'Authorization': `Token token=${user.token}`
       }
     })
-      .then(responseData => setPerform(responseData.data.perform))
-      .then(() => console.log(perform))
+      .then(responseData => setPerform(responseData.data.performance))
+      .then(() => console.log(performance))
       .catch(console.error)
   }, [])
 
@@ -44,9 +44,9 @@ const Perform = ({ user, alerts, match }) => {
   return (
     <div>
       <h1>Performance</h1>
-      <p>{perform && perform.date}</p>
-      <p>{moment(perform && perform.date).format('MMMM Do YYYY')}</p>
-      <p>Located at {perform && perform.location}</p>
+      <p>{moment(perform && perform.date).format('dddd, MMMM Do YYYY')}</p>
+      <p>{moment(perform.time, 'HH:mm').format('h:mm A')}</p>
+      <p>{perform && perform.location}</p>
       <p>{perform && perform.pieces}</p>
       <Button className="btn btn-primary mr-2" href={`#/performances/${match.params.id}/edit`}>Edit</Button>
       <button className="btn btn-outline-dark mr-2" onClick={destroy}>Delete</button>

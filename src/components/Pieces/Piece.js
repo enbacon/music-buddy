@@ -33,7 +33,7 @@ const Piece = ({ user, alerts, match }) => {
       .catch(console.error)
   }
 
-  // if piece is deleted then redirect to home
+  // if piece is deleted then redirect to pieces
   if (deleted) {
     return <Redirect to={
       { pathname: '/pieces' } } />

@@ -1,4 +1,7 @@
-# Music Buddy
+# Music Buddy:  An easy way for musicians to track their repertoire and performances!
+
+## Setup Steps
+Sign up for the app using an email address and password.
 
 ### Links for Music Buddy Full Stack Project
 #### Front-end
@@ -25,6 +28,27 @@
 * MongoDB
 * JavaScript
 
+## Catalog of Routes
+### Repertoire
+
+|  Verb  | URI Pattern |
+|:------:|:-----------:|
+|   GET  | /pieces     |
+|   GET  | /pieces/:id |
+|  POST  | /pieces     |
+|  PATCH | /pieces/:id |
+| DELETE | /pieces/:id |
+
+### Performances
+
+|  Verb  |    URI Pattern    |
+|:------:|:-----------------:|
+|   GET  |   /performances   |
+|   GET  | /performances/:id |
+|  POST  |   /performances   |
+|  PATCH | /performances/:id |
+| DELETE | /performances/:id |
+
 # Planning:
 ### Front-end Repository
 * Wireframes:
@@ -41,12 +65,14 @@
 * As a user, I want to be able to add pieces to my repertoire.
 * As a user, I want to be able to update my pieces.
 * As a user, I want to be able to look at all of the the pieces in my repertoire.
+
 * As a user, I want to be able to delete one of my pieces.
+* As a user, I want to be able to create a performance of pieces from my repertoire.
+* As a user, I want to be able to edit a performance.
+* As a user, I want to be able to delete a performance.
 
 # Development Process and Problem Solving
 The idea for this project came to me about 6 years ago when I was applying to graduate schools for my Master's in Cello Performance. Preparing for auditions, keeping track of the repertoire, the dates, etc. was so exhausting that I would lose hours to double checking my repertoire, performances, dates, and requirements. I wished that one day I or someone would be able to create a program that would help with the process. Now, after 11 weeks of training, I have built the essentials (plus some) of the dream project, and it can help me, my students, my friends, colleagues, and other musicians, better organize and track their repertoire and performing schedules.
-
-I
 
 
 ### Difficulties Faced
@@ -72,3 +98,4 @@ I
 * Have the ability to send the 'printable version' to friends via e-mail.
 
 ### Unsolved Issues
+* No styling/ not intuitive user experience.

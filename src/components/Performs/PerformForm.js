@@ -22,6 +22,7 @@ const PerformForm = ({ user, perform, handleChange, handleSelect, handleSubmit }
       .catch(console.error)
   }, [])
 
+  // somehow changed selection to only composers
   const options = pieces.map(piece => (
     { label: piece.title, value: piece._id }
   ))

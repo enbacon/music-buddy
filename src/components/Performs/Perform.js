@@ -41,13 +41,19 @@ const Perform = ({ user, alerts, match }) => {
       { pathname: '/performances' } } />
   }
 
+  if (!perform) {
+    return ''
+  }
+
   return (
     <div>
       <h1>Performance</h1>
       <p>{moment(perform && perform.date).format('dddd, MMMM Do YYYY')}</p>
       <p>{moment(perform.time, 'HH:mm').format('h:mm A')}</p>
       <p>{perform && perform.location}</p>
-      <p>{perform && perform.pieces}</p>
+      {perform.pieces.map(piece => (
+        <p key={piece._id}>{piece.title}</p>
+      ))}
       <Button className="btn btn-primary mr-2" href={`#/performances/${match.params.id}/edit`}>Edit</Button>
       <button className="btn btn-outline-dark mr-2" onClick={destroy}>Delete</button>
       <Link to="/performances">Return to all performances</Link>

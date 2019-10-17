@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import PerformForm from './PerformForm'
-// import { Link } from 'react-router-dom'
 
 const CreatePerform = ({ user }) => {
   const performObject = {
@@ -21,6 +20,10 @@ const CreatePerform = ({ user }) => {
   const handleChange = event => {
     event.persist()
     setPerform(perform => ({ ...perform, [event.target.name]: event.target.value }))
+  }
+
+  const handleSelect = arrayOfPieces => {
+    setPerform({ ...perform, pieces: arrayOfPieces })
   }
 
   const handleSubmit = event => {
@@ -46,6 +49,7 @@ const CreatePerform = ({ user }) => {
     <PerformForm
       perform={perform}
       handleChange={handleChange}
+      handleSelect={handleSelect}
       handleSubmit={handleSubmit}
       user={user}
     />

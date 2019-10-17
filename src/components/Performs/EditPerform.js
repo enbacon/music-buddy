@@ -9,7 +9,7 @@ const EditPerform = ({ user, match, alert, history }) => {
   const [perform, setPerform] = useState({
     date: '',
     time: '',
-    location: 'this is a test',
+    location: '',
     pieces: [],
     intermission: 0,
     length: 0
@@ -27,7 +27,8 @@ const EditPerform = ({ user, match, alert, history }) => {
         const formattedDate = moment(responseData.data.performance.date).format('YYYY-MM-DD')
         setPerform({ ...responseData.data.performance, date: formattedDate })
       })
-      .then(() => console.log('this is perform', perform))
+      .then(responseData => setPerform(responseData.data.performance))
+      .then(console.log('this is perform', perform))
       .catch(console.error)
   }, [])
 
@@ -49,15 +50,12 @@ const EditPerform = ({ user, match, alert, history }) => {
       headers: {
         'Authorization': `Bearer ${user.token}`
       },
-      data: { perform }
+      data: { performance: perform }
     })
       .then(() => alert({ heading: 'Success!', message: 'You updated a performance!', variant: 'success' }))
       .then(() => history.push(`/performances${match.params.id}`))
       .catch(() => alert({ heading: 'Rut roh!', message: 'Something went wrong', variant: 'danger' }))
   }
-
-  // moment((perform && perform.date), '').format('MMMM Do YYYY')
-  // moment(perform.time, 'HH:mm').format('h:mm A')
 
   return (
     <PerformForm

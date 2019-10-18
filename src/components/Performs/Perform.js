@@ -56,7 +56,8 @@ const Perform = ({ user, alerts, match }) => {
       <h5>{moment(perform.date).format('dddd, MMMM Do YYYY')}</h5>
       <h5>{moment(perform.time, 'HH.mm').format('h:mm A')}</h5>
       <p>{perform && perform.location}</p>
-      <p>{performanceJsx}</p>
+      <div>{performanceJsx}</div>
+      <h6>The intermission will be {perform.intermission} minutes.</h6>
       <Button className="btn btn-primary mr-2" href={`#/performances/${match.params.id}/edit`}>Edit</Button>
       <button className="btn btn-outline-dark mr-2" onClick={destroy}>Delete</button>
       <Link to="/performances">Return to performances</Link>

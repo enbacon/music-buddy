@@ -120,6 +120,7 @@ For all of the problems that came up during the development of the app, they wer
 * Sort pieces by type (i.e. Concerto, Sonata, Suite, etc.)
 * Send performance dates to iCal, Google Calendars, etc.
 * Have the ability to send the 'printable version' to friends via e-mail.
+* With some small reworking, this could become a template for things such as groceries and shopping lists.
 
 ### Unsolved Issues
 * No styling/ not intuitive user experience.

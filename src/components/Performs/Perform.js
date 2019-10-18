@@ -45,7 +45,7 @@ const Perform = ({ user, alerts, match }) => {
   }
   const performanceJsx = perform.pieces.map(piece => (
     <div key={piece._id}>
-      <h3>{ piece.title }</h3>
+      <h4>{ piece.title }</h4>
       <p>by { piece.composer}</p>
     </div>
   ))
@@ -53,8 +53,8 @@ const Perform = ({ user, alerts, match }) => {
   return (
     <div>
       <h1>Performance</h1>
-      <p>{moment(perform.date).format('dddd, MMMM Do YYYY')}</p>
-      <p>{moment(perform.time, 'HH.mm').format('h:mm A')}</p>
+      <h5>{moment(perform.date).format('dddd, MMMM Do YYYY')}</h5>
+      <h5>{moment(perform.time, 'HH.mm').format('h:mm A')}</h5>
       <p>{perform && perform.location}</p>
       <p>{performanceJsx}</p>
       <Button className="btn btn-primary mr-2" href={`#/performances/${match.params.id}/edit`}>Edit</Button>

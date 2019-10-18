@@ -4,7 +4,6 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
 const Pieces = ({ user, alerts }) => {
-  console.log(user, alerts)
   const [pieces, setPieces] = useState([])
 
   useEffect(() => {

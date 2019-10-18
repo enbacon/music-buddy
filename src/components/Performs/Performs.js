@@ -16,8 +16,11 @@ const Performs = ({ user, alerts }) => {
         'Authorization': `Token token=${user.token}`
       }
     })
-      .then(responseData => setPerforms(responseData.data.performances))
-      .then(console.log)
+      .then(responseData => {
+        setPerforms(responseData.data.performances)
+        console.log('this is responseData.performances', responseData.data.performances)
+      })
+      .then(() => console.log('this is performs', performs))
       .catch(console.error)
   }, [])
 

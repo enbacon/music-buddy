@@ -53,5 +53,4 @@ const Piece = ({ user, alerts, match }) => {
   )
 }
 
-// {*/ withRouter gives Piece all of the props /*}
 export default withRouter(Piece)

@@ -9,7 +9,7 @@ Sign up for the app using an email address and password.
 * https://github.com/enbacon/music-buddy
 
 #### Back-end
-*
+* https://lit-cliffs-90523.herokuapp.com/
 * https://github.com/enbacon/music-buddy-back-end
 
 ## Front-end Technologies Used
@@ -77,9 +77,13 @@ The idea for this project came to me about 6 years ago when I was applying to gr
 
 ### Difficulties Faced
 * Radio buttons.
-  - Handling the way they
+  - Handling the state of the button.
+  - Having the proper buttons pre-selected when editing a piece.
 * Date & Times
-  - Formating dates and times to be most helpful and attractive to the user.
+  - Formating dates and times to be most helpful to the user.
+* Dropdown selector.
+  - Populating the dropdown selector for creating a performance.
+  - Populating the dropdown selector with matching pieces when editing a performance.
 * Edit capabilities.
   - Getting the Edit Piece and the Edit Performances pages to be pre-populated with the information already stored was a challenge.
     - The biggest part of the challenge seemed to be switching between the data formats the user would see and the data formats required by the server.

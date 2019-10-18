@@ -27,8 +27,6 @@ const EditPerform = ({ user, match, alert, history }) => {
         const formattedDate = moment(responseData.data.performance.date).format('YYYY-MM-DD')
         setPerform({ ...responseData.data.performance, date: formattedDate })
       })
-      .then(responseData => setPerform(responseData.data.performance))
-      .then(console.log('this is perform', perform))
       .catch(console.error)
   }, [])
 
@@ -53,7 +51,7 @@ const EditPerform = ({ user, match, alert, history }) => {
       data: { performance: perform }
     })
       .then(() => alert({ heading: 'Success!', message: 'You updated a performance!', variant: 'success' }))
-      .then(() => history.push(`/performances${match.params.id}`))
+      .then(() => history.push(`/performances/${match.params.id}`))
       .catch(() => alert({ heading: 'Rut roh!', message: 'Something went wrong', variant: 'danger' }))
   }
 

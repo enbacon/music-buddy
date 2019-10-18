@@ -7,8 +7,8 @@ import apiUrl from '../../apiConfig'
 
 const PerformForm = ({ user, perform, handleChange, handleSelect, handleSubmit }) => {
   const cancelPath = perform && perform._id ? `#/performances/${perform._id}` : '#performances'
-
-  const [pieces, setPieces] = useState([])
+  //
+  const [options, setOptions] = useState([])
 
   useEffect(() => {
     axios({
@@ -18,14 +18,11 @@ const PerformForm = ({ user, perform, handleChange, handleSelect, handleSubmit }
         'Authorization': `Token token=${user.token}`
       }
     })
-      .then(responseData => setPieces(responseData.data.pieces))
+      .then(responseData => {
+        setOptions(responseData.data.pieces.map(piece => ({ label: `${piece.title} by ${piece.composer}`, value: piece })))
+      })
       .catch(console.error)
   }, [])
-
-  // somehow changed selection to only composers
-  const options = pieces.map(piece => (
-    { label: piece.title, value: piece._id }
-  ))
 
   return (
     <Form onSubmit={handleSubmit} className="mt-2">

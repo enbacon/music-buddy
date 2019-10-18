@@ -68,7 +68,7 @@ const PerformForm = ({ user, perform, handleChange, handleSelect, handleSubmit }
         />
       </Form.Group>
       <Form.Group controlId="intermission">
-        <Form.Label>Intermission:</Form.Label>
+        <Form.Label>Intermission (in minutes):</Form.Label>
         <Form.Control
           type="number"
           placeholder="minutes"

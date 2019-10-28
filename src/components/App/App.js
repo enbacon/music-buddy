@@ -57,96 +57,39 @@ class App extends Component {
           <Route path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/' render={() => (
-            <Pieces user={user} alert={this.alert} />
-          )} />
+          <Route exact path='/' />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-          <AuthenticatedRoute
-            user={user}
-            exact path='/pieces'
-            render={() => (
-              <Pieces
-                user={user}
-                alert={this.alert}
-              />
-            )}
-          />
-          <AuthenticatedRoute
-            user={user}
-            exact path='/pieces/:id'
-            render={() => (
-              <Piece
-                user={user}
-                alert={this.alert}
-              />
-            )}
-          />
-          <AuthenticatedRoute
-            user={user}
-            exact path='/create-piece'
-            render={() => (
-              <CreatePiece
-                user={user}
-                alert={this.alert}
-              />
-            )}
-          />
-          <AuthenticatedRoute
-            user={user}
-            exact path='/pieces/:id/edit'
-            render={() => (
-              <EditPiece
-                user={user}
-                alert={this.alert}
-              />
-            )}
-          />
 
-          <AuthenticatedRoute
-            user={user}
-            exact path='/performances'
-            render={() => (
-              <Performs
-                user={user}
-                alert={this.alert}
-              />
-            )}
-          />
-          <AuthenticatedRoute
-            user={user}
-            exact path='/performances/:id'
-            render={() => (
-              <Perform
-                user={user}
-                alert={this.alert}
-              />
-            )}
-          />
-          <AuthenticatedRoute
-            user={user}
-            exact path='/create-performance'
-            render={() => (
-              <CreatePerform
-                user={user}
-                alert={this.alert}
-              />
-            )}
-          />
-          <AuthenticatedRoute
-            user={user}
-            exact path='/performances/:id/edit'
-            render={() => (
-              <EditPerform
-                user={user}
-                alert={this.alert}
-              />
-            )}
-          />
+          <AuthenticatedRoute user={user} exact path='/pieces' render={() => (
+            <Pieces user={user} alert={this.alert} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/pieces/:id' render={() => (
+            <Piece user={user} alert={this.alert} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/create-piece' render={() => (
+            <CreatePiece user={user} alert={this.alert} />
+          )}/>
+          <AuthenticatedRoute user={user} exact path='/pieces/:id/edit' render={() => (
+            <EditPiece user={user} alert={this.alert} />
+          )} />
+
+          <AuthenticatedRoute user={user} exact path='/performances' render={() => (
+            <Performs user={user} alert={this.alert} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/performances/:id' render={() => (
+            <Perform user={user} alert={this.alert} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/create-performance' render={() => (
+            <CreatePerform user={user} alert={this.alert} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/performances/:id/edit' render={() => (
+            <EditPerform user={user} alert={this.alert} />
+          )} />
         </main>
       </Fragment>
     )

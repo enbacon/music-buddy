@@ -20,9 +20,6 @@ import CreatePerform from '../Performs/CreatePerform'
 import EditPerform from '../Performs/EditPerform'
 
 class App extends Component {
-  // constructor () {
-  //   super()
-    // this.state = {
     state = {
       user: null,
       alerts: []
@@ -57,7 +54,7 @@ class App extends Component {
           <Route path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />
           )} />
-          <Route exact path='/' />
+          <Route path='/sign-in' />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
           )} />

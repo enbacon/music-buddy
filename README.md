@@ -121,5 +121,4 @@ For all of the problems that came up during the development of the app, they wer
 * Have the ability to send the 'printable version' to friends via e-mail.
 * Add an about page to describe why this application was built.
 * Add a homepage with a carousel to give a few brief sentences on how to use the application.
-* Add a favicon.
 * Allow user to adjust the order of the pieces.

@@ -20,17 +20,17 @@ const Pieces = ({ user, alerts }) => {
 
   const piecesJsx = pieces.map(piece => (
     <div key={piece._id}>
-      <li><Link to={`/pieces/${piece._id}`}>{piece.title}</Link></li>
+      <p className="mb-0"><Link to={`/pieces/${piece._id}`}>{piece.title}</Link></p>
       <p>by {piece.composer}</p>
     </div>
   ))
 
   return (
-    <div>
-      <h1>Repertoire</h1>
-      <ul>
+    <div className="row col-sm-10 col-md-8 mx-auto">
+      <div className="col-sm-10 col-md-8 mx-auto">
+        <h1 className="mb-2">Repertoire</h1>
         {pieces.length ? piecesJsx : 'Please add music to your repertoire!'}
-      </ul>
+      </div>
     </div>
   )
 }

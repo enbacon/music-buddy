@@ -1,1 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Lora|Noto+Sans+JP|Paprika|Noto+Sans+KR|Nunito+Sans|Quattrocento&display=swap');
 @import '~bootstrap/scss/bootstrap';
+
+$black: #000;
+$white: #fff;
+
+body {
+  background-color: $white;
+  background-size: cover;
+  font-family: 'Quattrocento', serif;
+  min-height: 100vh;
+}
+
+.btn {
+  background-color: rgba(87, 106, 138, .5) !important;
+  border: 0;
+}
+
+div.dropdown-content {
+  margin-bottom: 3px;
+}
+
+main {
+  height: calc(100vh - 120px);
+  overflow-y: scroll;
+}
+
+main.container {
+  align-items: center;
+  background-image: url('/public/bg.jpg'), url('/bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.navbar.Brand {
+  color: $black;
+}
+
+.navbar-brand {
+  color: $black;
+  font-family: 'Paprika', cursive;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.navbar-dark .navbar-brand {
+  color: $black;
+  pointer-events: none
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: $black;
+}
+
+.program {
+  list-style-type: circle;
+  padding: 0;
+}
+
+.row {
+  align-items: center;
+  background: $white;
+  border-bottom: 30px solid $white;
+  border-top: 30px solid $white;
+  flex-direction: column;
+  height: 70%;
+  justify-content: flex-start;
+  max-width: 600px;
+  min-height: calc(80vh - 120px);
+  overflow-y: scroll;
+  padding: 1rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  }

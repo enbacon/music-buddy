@@ -24,10 +24,9 @@ const EditPerform = ({ user, match, alert, history }) => {
       }
     })
       .then(responseData => {
-        console.log('this is the performance.date', responseData.data.performance.date)
         const formattedDate = moment(responseData.data.performance.date, 'YYYY-MM-DD').format('YYYY-MM-DD')
-        console.log('this is the formattedDate', formattedDate)
-        setPerform({ ...responseData.data.performance, date: formattedDate })
+        const piecesIds = responseData.data.performance.pieces.map(piece => piece._id)
+        setPerform({ ...responseData.data.performance, date: formattedDate, pieces: piecesIds })
       })
       .catch(console.error)
   }, [])
@@ -38,7 +37,7 @@ const EditPerform = ({ user, match, alert, history }) => {
   }
 
   const handleSelect = arrayOfPieces => {
-    setPerform({ ...perform, piecesIds: arrayOfPieces })
+    setPerform({ ...perform, pieces: arrayOfPieces })
   }
 
   const handleSubmit = event => {

@@ -40,15 +40,17 @@ const Piece = ({ user, alerts, match }) => {
   }
 
   return (
-    <div>
+    <div className="row col-sm-10 col-md-8 mx-auto">
       <h1>Piece</h1>
-      <p>Title: {piece && piece.title}</p>
-      <p>Composer: {piece && piece.composer}</p>
-      <p>Memorized: {(piece && piece.memorized) ? 'Yes' : 'No'}</p>
-      <p>Piano Accompaniment: {(piece && piece.piano) ? 'Yes' : 'No'}</p>
-      <Button className="btn btn-primary mr-2" href={`#/pieces/${match.params.id}/edit`}>Edit</Button>
-      <button className="btn btn-outline-dark mr-2" onClick={destroy}>Delete Piece</button>
-      <Link to="/pieces">Return to Repertoire</Link>
+      <p><strong>Title:</strong> {piece && piece.title}</p>
+      <p><strong>Composer:</strong> {piece && piece.composer}</p>
+      <p><strong>Memorized:</strong> {(piece && piece.memorized) ? 'Yes' : 'No'}</p>
+      <p><strong>Piano Accompaniment:</strong> {(piece && piece.piano) ? 'Yes' : 'No'}</p>
+      <div>
+        <Button className="btn btn-primary mr-2" href={`#/pieces/${match.params.id}/edit`}>Edit</Button>
+        <button className="btn btn-primary mr-2" onClick={destroy}>Delete Piece</button>
+      </div>
+      <Link to="/pieces" className="mt-2">Return to Repertoire</Link>
     </div>
   )
 }

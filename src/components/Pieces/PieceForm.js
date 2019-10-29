@@ -6,7 +6,7 @@ const PieceForm = ({ piece, handleChange, handleSubmit }) => {
   const cancelPath = piece._id ? `#/pieces/${piece._id}` : '#pieces'
 
   return (
-    <div className="mt-2 row col-sm-10 col-md-8 mx-auto">
+    <div className="mt-2 text-left row col-sm-10 col-md-8 mx-auto">
       <Form onSubmit={handleSubmit} className="col-md-10 mx-auto">
         <Form.Group controlId="title">
           <Form.Label><strong>Title:</strong></Form.Label>

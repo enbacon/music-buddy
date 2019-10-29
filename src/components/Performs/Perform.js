@@ -45,22 +45,26 @@ const Perform = ({ user, alerts, match }) => {
   }
   const performanceJsx = perform.pieces.map(piece => (
     <div key={piece._id}>
-      <h4>{ piece.title }</h4>
+      <h4 className="mb-0">{ piece.title }</h4>
       <p>by { piece.composer}</p>
     </div>
   ))
 
   return (
-    <div>
-      <h1>Performance</h1>
-      <h5>{moment(perform.date, 'YYYY-MM-DD').format('dddd, MMMM Do YYYY')}</h5>
-      <h5>{moment(perform.time, 'HH.mm').format('h:mm A')}</h5>
-      <p>{perform && perform.location}</p>
-      <div>{performanceJsx}</div>
-      <h6>The intermission will be {perform.intermission} minutes.</h6>
-      <Button className="btn btn-primary mr-2" href={`#/performances/${match.params.id}/edit`}>Edit</Button>
-      <button className="btn btn-primary mr-2" onClick={destroy}>Delete</button>
-      <Link to="/performances">Return to performances</Link>
+    <div className="row col-sm-10 col-md-8 mx-auto">
+      <div className="col-sm-10 col-md-8 mx-auto">
+        <h1>Performance</h1>
+        <h5 className="mb-0">{moment(perform.date, 'YYYY-MM-DD').format('dddd, MMMM Do YYYY')}</h5>
+        <h5 className="mt-1">{moment(perform.time, 'HH.mm').format('h:mm A')}</h5>
+        <p>{perform && perform.location}</p>
+        <div>{performanceJsx}</div>
+        <h6>There will be a {perform.intermission} minute intermission.</h6>
+        <div>
+          <Button className="btn btn-primary mr-2 mb-2" href={`#/performances/${match.params.id}/edit`}>Edit</Button>
+          <button className="btn btn-primary mr-2 mb-2" onClick={destroy}>Delete</button>
+        </div>
+        <Link to="/performances" className="mt-2">Return to performances</Link>
+      </div>
     </div>
   )
 }

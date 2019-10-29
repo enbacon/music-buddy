@@ -54,7 +54,7 @@ const Performs = ({ user, alerts }) => {
       <div className="col-sm-10 col-md-8 mx-auto">
         <h1 className="mb-2">Upcoming Performances</h1>
         <ul className="upcomingPerformances">
-          <li>{upcomingPerformancesJsx.length ? upcomingPerformancesJsx : 'Please add an upcoming performance!'}</li>
+          <li>{upcomingPerformancesJsx.length ? upcomingPerformancesJsx : 'Please add an upcoming performance.'}</li>
         </ul>
         <h1 className="mb-2">Past Performances</h1>
         <ul className="pastPerformances">

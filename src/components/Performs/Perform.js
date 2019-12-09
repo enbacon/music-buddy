@@ -46,7 +46,7 @@ const Perform = ({ user, alerts, match }) => {
   const performanceJsx = perform.pieces.map(piece => (
     <div key={piece._id}>
       <h4 className="mb-0">{ piece.title }</h4>
-      <p>by { piece.composer}</p>
+      <p>by { piece.composer }</p>
     </div>
   ))
 

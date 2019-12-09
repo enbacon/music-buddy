@@ -7,7 +7,6 @@ import apiUrl from '../../apiConfig'
 
 const PerformForm = ({ user, perform, handleChange, handleSelect, handleSubmit }) => {
   const cancelPath = perform && perform._id ? `#/performances/${perform._id}` : '#performances'
-  //
   const [options, setOptions] = useState([])
 
   useEffect(() => {

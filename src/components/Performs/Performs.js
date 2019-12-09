@@ -21,6 +21,7 @@ const Performs = ({ user, alerts }) => {
       .catch(console.error)
   }, [])
 
+  // &#9835 = music notes
   const renderPerformance = perform => (
     <div key={perform._id}>
       <h5><Link to={`/performances/${perform._id}`}>{moment(perform && perform.date, 'YYYY-MM-DD').format('dddd, MMMM Do YYYY')}</Link>, at { moment(perform.time, 'HH:mm').format('h:mm A') }</h5>
@@ -36,7 +37,6 @@ const Performs = ({ user, alerts }) => {
   )
 
   const upcomingPerformancesJsx = []
-
   const pastPerformancesJsx = []
 
   for (let i = 0; i < performs.length; i++) {

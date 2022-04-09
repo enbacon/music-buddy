@@ -12,7 +12,7 @@
     "dotenv": "4.0.0",
     "dotenv-expand": "4.2.0",
     "fs-extra": "3.0.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.27",
     "object-assign": "4.1.1",
     "promise": "8.0.1",
